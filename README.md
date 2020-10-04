@@ -1,6 +1,13 @@
 # MathLib
 Some utilities for math.
 
+# Instructions
+## 1. Usage
+Copy the contents inside the `src` folder into your project root, then import when needed.
+
+## 2. Notice
+Notice that all angles the functions return is an instance of class `Rad` by default. use `.deg` to convert it into an instance `Deg()`.
+
 ## Currently Maintained
 ### Line
 Lang: Kotlin
