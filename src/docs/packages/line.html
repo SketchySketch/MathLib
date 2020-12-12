@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Packages.line</title>
+		<link href="../style.css" rel="stylesheet" />
+	</head>
+	<body>
+		<div id="header">
+			<a href="../home.html"><p id="header">MathLib Docs</p></a>
+			<div class="anim_block" id="block1"></div>
+			<div class="anim_block" id="block2"></div>
+			<div class="anim_block" id="block3"></div>
+			<div class="anim_block" id="block4"></div>
+			<hr />
+		</div>
+		<h1>
+			Package <code><mdl>line</mdl></code>
+		</h1>
+		<h2>Overview</h2>
+		<p>
+			The <code><mdl>line</mdl></code> package includes: <br />
+		</p>
+		<ul>
+			<li>
+				<code><cls>Point</cls></code> Declaration for points
+			</li>
+			<li>
+				<code><cls>LineDeclaration</cls></code> Declaration for lines
+			</li>
+			<li>
+				<code><cls>Line</cls></code> More utilities for lines
+			</li>
+			<li>
+				<code><fle>Calc.kt</fle></code> More calculations
+			</li>
+		</ul>
+		<h2>Details</h2>
+		<h3><code><cls>Point</cls>(<val>x</val>: <typ>Double</typ>, <val>y</val>: <typ>Double</typ>)</code></h3>
+		<p>Constructs a <code><cls>Point</cls></code> instance.</p>
+		<h4>Constructors</h4>
+		<ul>
+			<li>Primary constructor: <code>(<val>x</val>: <typ>Double</typ>, <val>y</val>: <typ>Double</typ>)</code></li>
+			<li>Secondary constructor: <code>(<val>r</val>: <typ>Double</typ>, <val>theta</val>: <mdl>angle</mdl>.<typ>Deg</typ>)</code></li>
+			<li>Secondary constructor: <code>(<val>r</val>: <typ>Double</typ>, <val>theta</val>: <mdl>angle</mdl>.<typ>Deg</typ>)</code></li>
+		</ul>
+		<h4>Properties</h4>
+		<p><code><prp>x</prp>: <typ>Double</typ>, <prp>y</prp>: <typ>Double</typ></code></p>
+		<h4>Methods</h4>
+		<p>
+			<code><fun>getCoord</fun>(<val>isPolar</val>: <typ>Boolean</typ> = <lit>false</lit>) -> <typ>List</typ>[<typ>Double</typ>]</code>
+			extended getter. Returns the coordinate of this point. You can decide whether it’s returning polar coordinates or not.
+		</p>
+		<h3><code><cls>LineDeclaration</cls></code></h3>
+		<p>Constructs a basic line.</p>
+		<p class="warn">It's not recommended to use this class, for <code><cls>Line</cls></code> is a better implementation.</p>
+		<h4>Constructors</h4>
+		<ul>
+			<li>Secondary constructor: <code>(<val>A</val>: <typ>Point</typ>, <val>B</val>: <typ>Point</typ>) <com>// start = A, end = B</com></code></li>
+			<li>Secondary constructor: <code>(<val>A</val>: <typ>Point</typ>, <val>slope</val>: <typ>Double</typ>) <com>// start = A, end = null</com></code></li>
+			<li>Secondary constructor: <code>(<val>slope</val>: <typ>Double</typ>, <val>y_intercept</val>: <typ>Double</typ>) <com>// start = null, end = null</com></code></li>
+			<li>Secondary constructor: <code>(<val>angle</val>: <mdl>angle</mdl>.<typ>Deg</typ>, <val>A</val>: <typ>Point</typ>) <com>// start = A, end = null</com></code></li>
+			<li>Secondary constructor: <code>(<val>angle</val>: <mdl>angle</mdl>.<typ>Deg</typ>, <val>A</val>: <typ>Point</typ>) <com>// start = A, end = null</com></code></li>
+		</ul>
+		<h4>Properties</h4>
+		<code>
+			<prp>start</prp>: <typ>Point?</typ>, <prp>end</prp>: <typ>Point?</typ>, <prp>k</prp>: <typ>Double</typ> <com>(slope)</com>, <prp>b</prp>: <typ>Double</typ> <com>(y intercept)</com>
+		</code>
+		<h3><code><cls>Line</cls>: <cls>LineDeclaration</cls></code></h3>
+		<p>Extends <code><cls>LineDeclaration</cls></code>. Constructs a line (<code><cls>LineDeclaration</cls></code> instance).</p>
+		<h4>Constructors</h4>
+		<p>Inherited from <code><cls>LineDeclaration</cls></code></p>
+		<ul>
+			<li>Secondary constructor: <code>(<val>A</val>: <typ>Point</typ>, <val>B</val>: <typ>Point</typ>) <com>// start = A, end = B</com></code></li>
+			<li>Secondary constructor: <code>(<val>A</val>: <typ>Point</typ>, <val>slope</val>: <typ>Double</typ>) <com>// start = A, end = null</com></code></li>
+			<li>Secondary constructor: <code>(<val>slope</val>: <typ>Double</typ>, <val>y_intercept</val>: <typ>Double</typ>) <com>// start = null, end = null</com></code></li>
+			<li>Secondary constructor: <code>(<val>angle</val>: <mdl>angle</mdl>.<typ>Rad</typ>, <val>A</val>: <typ>Point</typ>) <com>// start = A, end = null</com></code></li>
+			<li>Secondary constructor: <code>(<val>angle</val>: <mdl>angle</mdl>.<typ>Deg</typ>, <val>A</val>: <typ>Point</typ>) <com>// start = A, end = null</com></code></li>
+		</ul>
+		<h4>Properties</h4>
+		<p>Inherited from <code><cls>LineDeclaration</cls></code></p>
+		<code>
+			<prp>start</prp>: <typ>Point?</typ>, <prp>end</prp>: <typ>Point?</typ>, <prp>k</prp>: <typ>Double</typ> <com>(slope)</com>, <prp>b</prp>: <typ>Double</typ> <com>(y intercept)</com>
+		</code>
+		<h4>Methods</h4>
+		<p>
+			<code><fun>pointOnLineX</fun>(<val>x</val>: <typ>Double</typ>) -> <typ>Point</typ></code>
+			returns a point on the line with given x-coordinate.
+		</p>
+		<p>
+			<code><fun>pointOnLineY</fun>(<val>y</val>: <typ>Double</typ>) -> <typ>Point</typ></code>
+			returns a point on the line with given y-coordinate.
+		</p>
+		<p>
+			<code><fun>perpendicular</fun>(<val>H</val>: <typ>Point</typ>) -> <typ>Line</typ></code>
+			returns a perpendicular line witch goes through the point H.
+		</p>
+		<h3><code><fle>Calc.kt</fle></code></h3>
+		<p>More calculations.</p>
+		<ul>
+			<li><code><fun>nSector</fun>(<val>A</val>: <typ>Point</typ>, <val>B</val>: <typ>Point</typ>, <val>n</val>: <typ>Int</typ>) -> <typ>MutatingList</typ>[<typ>Point</typ>]</code> returns an n-sector list.</li>
+			<li><code><fun>rotate</fun>(<val>A</val>: <typ>Point</typ>, <val>O</val>: <typ>Point</typ> <com>(centre)</com>, <val>angle</val>: <typ>Double</typ> <com>(in degree)</com>) -> Point</code> rotation of a point.</li>
+			<li><code><fun>rotate</fun>(<val>l</val>: <typ>Line</typ>, <val>O</val>: <typ>Point</typ> <com>(centre)</com>, <val>angle</val>: <typ>Double</typ> <com>(in degree)</com>) -> Line</code> rotation of a line.</li>
+			<li><code><fun>rotate</fun>(<val>l1</val>: <typ>Line</typ>, <val>l2</val>: <typ>Line</typ> -> <typ>Point</typ></code> intersection.</li>
+		</ul>
+	</body>
+</html>
