@@ -3,15 +3,11 @@ package angle
 import kotlin.math.PI
 
 class Deg(var degree: Double) {
-  val deg = this
-  val rad = this.toRad()
-  private fun toRad() = Rad(degree / 180 * PI)
+    fun rad() = Rad(degree / 180 * PI)
 }
 
 class Rad(var degree: Double) {
-  val deg = Deg(this.toDeg().degree)
-  val rad = this
-  private fun toDeg() = Deg(degree * 180 / PI)
+    fun deg() = Deg(degree * 180 / PI)
 }
 
 fun Double.deg() = Deg(this)
