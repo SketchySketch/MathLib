@@ -1,7 +1,11 @@
 package function.commonFunc
 
 // Operations
+<<<<<<< HEAD
 class FuncPlus(val left: Function, val right: Function) : Function() {
+=======
+class FuncPlus(private val left: Function, private val right: Function) : Function() {
+>>>>>>> pre-production
     override fun derivative(): Function {
         return FuncPlus(left.derivative(), right.derivative())
     }
@@ -11,7 +15,11 @@ class FuncPlus(val left: Function, val right: Function) : Function() {
     }
 }
 
+<<<<<<< HEAD
 class FuncUnaryMin(val left: Function) : Function() {
+=======
+class FuncUnaryMin(private val left: Function) : Function() {
+>>>>>>> pre-production
     override fun derivative(): Function {
         return FuncUnaryMin(left.derivative())
     }
@@ -21,7 +29,11 @@ class FuncUnaryMin(val left: Function) : Function() {
     }
 }
 
+<<<<<<< HEAD
 class FuncProd(val left: Function, val right: Function) : Function() {
+=======
+class FuncProd(private val left: Function, private val right: Function) : Function() {
+>>>>>>> pre-production
     override fun derivative(): Function {
         return FuncPlus(FuncProd(left.derivative(), right), FuncProd(left, right.derivative()))
     }
@@ -31,7 +43,11 @@ class FuncProd(val left: Function, val right: Function) : Function() {
     }
 }
 
+<<<<<<< HEAD
 class FuncDiv(val left: Function, val right: Function) : Function() {
+=======
+class FuncDiv(private val left: Function, private val right: Function) : Function() {
+>>>>>>> pre-production
     override fun derivative(): Function {
         return FuncDiv(FuncPlus(FuncProd(left.derivative(), right), FuncUnaryMin(FuncProd(left, right.derivative()))), FuncProd(right, right))
     }
