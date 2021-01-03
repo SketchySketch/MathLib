@@ -21,7 +21,7 @@ class ArrayFunc(var l: Double, var h: Double, var f: (Double) -> Double, var dx:
     )
 
     init {
-        if (l > h || dx > (h - l)) throw Throwable("Illegal ArrayFunc declaration.")
+        if (l > h || dx > (h - l)) throw IndexOutOfBoundsException("No enough indices")
         this.indices = l..h
         val arr = arrayListOf<Double>()
         var temp = l
@@ -79,11 +79,11 @@ fun constFunc(value: Double, range: ClosedFloatingPointRange<Double>) = ArrayFun
 
 operator fun ArrayFunc.get(value: Double): Double = if (value in l..h) {
     f(value)
-} else throw Throwable("Out of range")
+} else throw IndexOutOfBoundsException("Out of range")
 
-operator fun ArrayFunc.plus(f: ArrayFunc): ArrayFunc = if (indices == f.indices) ArrayFunc(l, h, { x -> f(x) + f.f(x) }, min(dx, f.dx)) else throw Throwable("Operation of two functions with different domains.")
-operator fun ArrayFunc.minus(f: ArrayFunc): ArrayFunc = if (indices == f.indices) ArrayFunc(l, h, { x -> f(x) - f.f(x) }, min(dx, f.dx)) else throw Throwable("Operation of two functions with different domains.")
-operator fun ArrayFunc.times(f: ArrayFunc): ArrayFunc = if (indices == f.indices) ArrayFunc(l, h, { x -> f(x) * f.f(x) }, min(dx, f.dx)) else throw Throwable("Operation of two functions with different domains.")
-operator fun ArrayFunc.div(f: ArrayFunc): ArrayFunc = if (indices == f.indices) ArrayFunc(l, h, { x -> f(x) / f.f(x) }, min(dx, f.dx)) else throw Throwable("Operation of two functions with different domains.")
+operator fun ArrayFunc.plus(f: ArrayFunc): ArrayFunc = ArrayFunc(l, h, { x -> f(x) + f.f(x) }, min(dx, f.dx))
+operator fun ArrayFunc.minus(f: ArrayFunc): ArrayFunc = ArrayFunc(max(l, f.l), min(h, f.h), { x -> f(x) - f.f(x) }, min(dx, f.dx))
+operator fun ArrayFunc.times(f: ArrayFunc): ArrayFunc = ArrayFunc(max(l, f.l), min(h, f.h), { x -> f(x) * f.f(x) }, min(dx, f.dx))
+operator fun ArrayFunc.div(f: ArrayFunc): ArrayFunc = ArrayFunc(max(l, f.l), min(h, f.h), { x -> f(x) / f.f(x) }, min(dx, f.dx))
 operator fun ArrayFunc.unaryMinus(): ArrayFunc = ArrayFunc(l, h, { x -> -f(x) }, dx)
 operator fun ArrayFunc.unaryPlus(): ArrayFunc = this
