@@ -6,4 +6,4 @@ Some utilities for math.
 Copy the contents inside the `src` folder into your project root, then import when needed.
 
 ## 2. Docs
-Go to https://kt-mathlib.now.sh/src/docs/home.html to see a full documentation.
+Go to the Wiki page to see a full documentation.
