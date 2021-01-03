@@ -1,10 +1,6 @@
 import function.commonFunc.*
 import kotlin.math.E
-<<<<<<< HEAD
-
-=======
  
->>>>>>> pre-production
 fun main() {
     val f = Power(xx, 3.0).derivative()
     println(f.getFun()(2.0))
